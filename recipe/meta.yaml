@@ -1,5 +1,5 @@
 {% set name = "robocorp-excel" %}
-{% set version = "0.4.0" %}
+{% set version = "0.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/robocorp_excel-{{ version }}.tar.gz
-  sha256: c1cb8a3747dcd1d3cfee06d28455c02a9a93f71fe257026ac850c40450808a24
+  sha256: 60b8248df771fe0afee522a0b4d328c9205d1516ecbae96e37bd9fadb834030f
 
 build:
   noarch: python
-  script: 
+  script:
     - echo f | xcopy /f /y /S %RECIPE_DIR%\README.md %SRC_DIR%\README.md  # [win]
     - cp -R {{ RECIPE_DIR }}/README.md {{ SRC_DIR }}/README.md  # [unix]
     - {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 0
 
 requirements:
   host:
